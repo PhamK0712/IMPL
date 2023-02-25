@@ -1,0 +1,44 @@
+
+
+using System;
+
+public class CSCI4250
+{
+    // Name: Khanh Pham
+    /*  Test cases
+        -Positve Integers (Passed)
+        -Negative Integers (Passed)
+        -Trailing Zeros in an Integer (Failed)
+        -Positive and Negative Decimal Numbers (Failed)
+    */
+    
+    //The method of separating the total sum of 2 input numbers with its Least Sig. Digit 
+    static void addLeastSigDigit (int x, int y) {
+        double sum = Convert.ToDouble(x + y); //The total of two input numbers
+        double leastSigDigit = Math.Abs(sum % 10); //Initialize that the Least Sig. Digit (LSD) is positive
+        int newValue = (int)(sum / 10); // The new number after identifying LSD
+        
+        //Output text
+        Console.WriteLine ("Total: " + sum + " | LSD: " +  leastSigDigit + " | new value: " + newValue);
+        Console.WriteLine("");
+        
+        //A boolean to make sure that the recursion is finished when the total sum is a single digit
+        if (sum >= 10 || sum <= -10) {
+            addLeastSigDigit(newValue, Convert.ToInt32(leastSigDigit));
+        }
+        else {
+            //Output text
+            Console.WriteLine("Done");
+        }
+        
+    }
+    
+    //Where the program starts execution
+    public static void Main(string[] args)
+    {
+        int firstValue = 8974;
+        int secondValue = 5;
+        
+        addLeastSigDigit(firstValue, secondValue);
+    }
+}
